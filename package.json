@@ -21,7 +21,8 @@
   ],
   "author": "Fokke Zandbergen, The Things Network",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "async": "^2.0.1",
     "del": "^2.2.2",
     "fs-extra": "^0.30.0",
