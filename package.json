@@ -1,0 +1,32 @@
+{
+  "name": "ttn-stylebook",
+  "version": "1.0.0",
+  "description": "Styles for The Things Network websites",
+  "private": true,
+  "scripts": {
+    "convert": "node bin/convert",
+    "add": "git add .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": [
+    "convert",
+    "add"
+  ],
+  "keywords": [
+    "ttn",
+    "sass",
+    "scss",
+    "less",
+    "stylus"
+  ],
+  "author": "Fokke Zandbergen, The Things Network",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.0.1",
+    "del": "^2.2.2",
+    "fs-extra": "^0.30.0",
+    "fs-readdir-recursive": "^1.0.0",
+    "less2stylus": "^0.1.0",
+    "pre-commit": "^1.1.3"
+  }
+}
