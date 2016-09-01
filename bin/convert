@@ -12,15 +12,25 @@ var SRC = path.join(__dirname, '..', 'src');
 var DIST = path.join(__dirname, '..', 'dist');
 var DOCS = path.join(__dirname, '..', 'docs');
 
-var files = read(SRC);
+var BOOTSTRAP_LESS = path.join(__dirname, '..', 'node_modules', 'bootstrap');
+var BOOTSTRAP_SCSS = path.join(__dirname, '..', 'node_modules', 'bootstrap-sass', 'assets', 'stylesheets');
+var BOOTSTRAP_STYL = path.join(__dirname, '..', 'node_modules', 'bootstrap-styl', 'bootstrap');
 
 async.series([
 	clean,
+
 	srcToLess,
 	lessToScss,
-	scssToSass,
-	scssToCss,
+	// scssToSass,
 	lessToStyl,
+	scssToCss,
+
+	bootstrapToLess,
+	bootstrapToScss,
+	bootstrapToStyl,
+	bootstrapToCss,
+	bootstrapAssets,
+
 	docs
 
 ], function(err, results) {
@@ -37,7 +47,7 @@ function clean(next) {
 }
 
 function srcToLess(next) {
-	fs.copy(SRC, path.join(DIST, 'less'), next);
+	fs.copy(path.join(SRC, 'less'), path.join(DIST, 'less'), next);
 }
 
 function lessToScss(next) {
@@ -48,7 +58,7 @@ function lessToScss(next) {
 			return next(err);
 		}
 
-		async.each(files, function(file, callback) {
+		async.each(read(path.join(DIST, 'scss')), function(file, callback) {
 			child_process.execFile('less2sass', [path.join(DIST, 'scss', file), '-d'], callback);
 		}, next);
 	});
@@ -96,22 +106,57 @@ function lessToStyl(next) {
 			return next(err);
 		}
 
-		async.each(files, function(file, callback) {
-			var target = fs.createWriteStream(path.join(DIST, 'styl', file.substr(0, file.lastIndexOf('.')) + '.styl'), {flags: 'a'});
-			var cmd = child_process.spawn('less2stylus', [path.join(SRC, file)]);
+		async.each(read(path.join(DIST, 'less')), function(file, callback) {
+			var target = fs.createWriteStream(path.join(DIST, 'styl', file.substr(0, file.lastIndexOf('.')) + '.styl'), {
+				flags: 'a'
+			});
+			var cmd = child_process.spawn('less2stylus', [path.join(DIST, 'less', file)]);
 
 			cmd.stdout.pipe(target);
 
-			cmd.on('close', function (code) {
+			var stderr;
+
+			cmd.stderr.on('data', function(data) {
+				stderr += data;
+			});
+
+			cmd.on('close', function(code) {
 
 				if (code !== 0) {
-					return callback(new Error('child process exited with code ' + code));
+					return callback(new Error(stderr || 'child process exited with code ' + code));
 				}
 
 				callback();
 			});
 
 		}, next);
+	});
+}
+
+function bootstrapToLess(next) {
+	fs.copy(path.join(BOOTSTRAP_LESS, 'less'), path.join(DIST, 'less', 'bootstrap'), next);
+}
+
+function bootstrapToScss(next) {
+	fs.copy(BOOTSTRAP_SCSS, path.join(DIST, 'scss', 'bootstrap'), next);
+}
+
+function bootstrapToStyl(next) {
+	fs.copy(BOOTSTRAP_STYL, path.join(DIST, 'styl', 'bootstrap'), next);
+}
+
+function bootstrapToCss(next) {
+	fs.copy(path.join(BOOTSTRAP_LESS, 'dist', 'css'), path.join(DIST, 'css'), next);
+}
+
+function bootstrapAssets(next) {
+	fs.copy(path.join(BOOTSTRAP_LESS, 'dist', 'fonts'), path.join(DIST, 'fonts'), function(err) {
+
+		if (err) {
+			return next(err);
+		}
+
+		fs.copy(path.join(BOOTSTRAP_LESS, 'dist', 'js'), path.join(DIST, 'js'), next);
 	});
 }
 
