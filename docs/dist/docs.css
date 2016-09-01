@@ -1,0 +1,7 @@
+.docs-color-swatch {
+  float: left;
+  width: 3em;
+  height: 3em;
+  margin: 0 .2em; }
+  .docs-color-swatch.docs-color-swatch-brand {
+    background-color: #1073B9; }

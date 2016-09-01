@@ -10,6 +10,7 @@ var read = require('fs-readdir-recursive');
 
 var SRC = path.join(__dirname, '..', 'src');
 var DIST = path.join(__dirname, '..', 'dist');
+var DOCS = path.join(__dirname, '..', 'docs');
 
 var files = read(SRC);
 
@@ -19,7 +20,8 @@ async.series([
 	lessToScss,
 	scssToSass,
 	scssToCss,
-	lessToStyl
+	lessToStyl,
+	docs
 
 ], function(err, results) {
 
@@ -82,7 +84,7 @@ function scssToCss(next) {
 			return next(err);
 		}
 
-		child_process.execFile('sass', ['--update', path.join(DIST, 'scss') + ':' + path.join(DIST, 'css')], next);
+		child_process.execFile('sass', ['--sourcemap=none', '--update', path.join(DIST, 'scss') + ':' + path.join(DIST, 'css')], next);
 	});
 }
 
@@ -110,5 +112,16 @@ function lessToStyl(next) {
 			});
 
 		}, next);
+	});
+}
+
+function docs(next) {
+	fs.ensureDir(path.join(DOCS, 'dist'), function(err) {
+
+		if (err) {
+			return next(err);
+		}
+
+		child_process.execFile('sass', ['--sourcemap=none', '--update', path.join(DOCS, 'src') + ':' + path.join(DOCS, 'dist')], next);
 	});
 }
