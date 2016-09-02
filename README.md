@@ -24,7 +24,7 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 	@import 'scss/variables';
 	
 	body {
-		color: $color-brand;
+		color: $ttn-color-brand;
 	}
 	```
 	
