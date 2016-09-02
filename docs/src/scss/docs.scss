@@ -1,4 +1,10 @@
-@import '../../dist/scss/variables';
+/**
+ * @import
+ *
+ * Run Sass with `--load-path ttn-stylebook/dist/scss` to import directly from that folder.
+ */
+
+@import 'ttn/bootstrap';
 
 .docs-color-swatch {
 	float: left;

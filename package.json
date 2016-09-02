@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "convert": "node bin/convert",
+    "docs": "node bin/convert docs",
     "add": "git add .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,10 +22,10 @@
   ],
   "author": "Fokke Zandbergen, The Things Network",
   "license": "MIT",
-  "dependencies": {
-    "bootstrap-styl": "^5.0.7"
-  },
   "devDependencies": {
+    "bootstrap-styl": "^5.0.7",
+    "replace": "^0.3.0",
+    "rimraf": "^2.5.4",
     "async": "^2.0.1",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
