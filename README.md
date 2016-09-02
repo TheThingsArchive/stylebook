@@ -13,7 +13,7 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 1. Depend on the repository, e.g. via NPM:
 
 	```bash
-	npm install --save thethingsnetwork/styleguide
+	npm install --save thethingsnetwork/ttn-stylebook
 	```
 	
 	> You can also [lock in to a certain branch or commit](https://docs.npmjs.com/files/package.json#github-urls).
