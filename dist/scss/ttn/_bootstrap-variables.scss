@@ -3,11 +3,11 @@
  * bootstrap to override its default variables.
  */
 
-// Import TTN variables only so we can use them in overrides
-@import 'variables';
-
 // Import Bootstrap variables only so we can use them in overrides
 @import '../bootstrap/bootstrap/variables';
+
+// Import TTN variables only so we can use them in overrides
+@import 'variables';
 
 /*******************************************
  * OVERRIDE BOOTSTRAP VARIABLES FROM HERE ON
