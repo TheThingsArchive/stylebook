@@ -3,9 +3,6 @@
  * bootstrap to override its default variables.
  */
 
-// Import Bootstrap variables only so we can use them in overrides
-@import '../bootstrap/bootstrap/variables';
-
 // Import TTN variables only so we can use them in overrides
 @import 'variables';
 
@@ -13,15 +10,15 @@
  * OVERRIDE BOOTSTRAP VARIABLES FROM HERE ON
  */
 
-$brand-primary: $ttn-color-brand;
-$gray-lighter: $ttn-color-gray-lighter;
+$brand-primary: $ttn-color-brand !default;
+$gray-lighter: $ttn-color-gray-lighter !default;
 
-$body-bg: $gray-lighter;
-$headings-color: $brand-primary;
-$page-header-border-color: $ttn-color-brand-lighter;
+$body-bg: $ttn-color-gray-lighter !default;
+$headings-color: $brand-primary !default;
+$page-header-border-color: $ttn-color-brand-lighter !default;
 
-$icon-font-path: $ttn-font-path;
-$font-family-sans-serif: $ttn-font-base;
-$headings-font-family: $ttn-font-headings;
+$icon-font-path: $ttn-font-path !default;
+$font-family-sans-serif: $ttn-font-base !default;
+$headings-font-family: $ttn-font-headings !default;
 
-$navbar-height: $ttn-navbar-height;
+$navbar-height: $ttn-navbar-height !default;

@@ -1,0 +1,11 @@
+$ttn-color-brand: #000000;
+
+@import 'ttn/bootstrap';
+
+.ttn-color-brand {
+	color: $ttn-color-brand;
+}
+
+.brand-primary {
+	color: $brand-primary;
+}
