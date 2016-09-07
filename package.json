@@ -7,10 +7,12 @@
     "convert": "node bin/convert",
     "docs": "node bin/convert docs",
     "add": "git add .",
-    "test": "npm run convert && grunt test"
+    "test": "npm run convert && grunt test",
+    "push": "git push --follow-tags"
   },
   "pre-commit": [
     "convert",
+    "test",
     "add"
   ],
   "keywords": [

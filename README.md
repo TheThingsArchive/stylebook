@@ -21,7 +21,7 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 2. Import a stylesheet in the language you use:
 
 	```css
-	@import 'ttn/variables';
+	@import 'ttn/ttn-variables';
 	
 	body {
 		color: $ttn-color-brand;
@@ -33,9 +33,9 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 ### Stylesheets
 There are different strategies for using the stylesheets:
 
-* [dist/*/ttn/variables](dist/less/ttn/variables.less): Just our variables for colors etc. For projects where you want to have full control over the actual styles.
-* [dist/*/ttn/ttn](dist/less/ttn/ttn.less): The above plus styles for custom components.
-* [dist/*/ttn/bootstrap-variables](dist/less/ttn/bootstrap-variables.less): Our variables plus those overrides for those of Bootstrap. For projects where you want to make further modifications to the Bootstrap variables before importing (maybe just parts of) Bootstrap.
+* [dist/*/ttn/variables](dist/less/ttn/variables.less): Just TTN variables. For projects where you want to have full control over the actual styles.
+* [dist/*/ttn/ttn](dist/less/ttn/ttn.less): The above plus TTN components.
+* [dist/*/ttn/bootstrap-variables](dist/less/ttn/bootstrap-variables.less): TTN and Bootstrap variables. For projects where you'd like to override additional Bootstrap variables before importing (maybe just parts of) Bootstrap.
 	* You can import parts of Bootstrap from [dist/*/bootstrap](dist/less/bootstrap). Be aware that the Sass version has components wrapped in another [bootstrap folder](dist/scss/bootstrap/bootstrap).
 * [dist/*/ttn/bootstrap](dist/less/ttn/bootstrap.less): All of the above plus all of Bootstrap.
 	* This also imports [dist/*/ttn/bootstrap-overrides](dist/less/ttn/bootstrap-overrides.less) for customisations of Bootstrap that cannot be done via variables.
@@ -79,7 +79,7 @@ There are different strategies for using the stylesheets:
 
 ## Default variables
 
-Both [Stylus](http://stylus-lang.com/docs/operators.html#conditional-assignment--) and [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_) support variable defaults. Less does not and promotes [lazy loading](http://lesscss.org/features/#variables-feature-default-variables) instead. Because we use Less as source to convert to Sass and Stylus this is an issue. So [bin/convert](bin/convert) does has replacements to make all variables in Stylus and Sass defaults.
+Both [Stylus](http://stylus-lang.com/docs/operators.html#conditional-assignment--) and [Sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#variable_defaults_) support variable defaults. Less does not and promotes [lazy loading](http://lesscss.org/features/#variables-feature-default-variables) instead. Because we use Less as source to convert to Sass and Stylus this is an issue. So [bin/convert](bin/convert) does has replacements to make all variables in Stylus and Sass defaults, **except** [dist/*/ttn/bootstrap-variables](dist/scss/ttn/_bootstrap-variables.less) so it can use but also override Bootstrap variabls.
 
 ## Tests
 To run [all tests](test):

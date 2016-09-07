@@ -84,7 +84,10 @@ module.exports.lessToScss = function(next) {
 
 				paths: [path.join(utils.DIST, 'scss')],
 				recursive: true,
-				silent: true
+				silent: true,
+
+				// except our overrides for bootstrap variables
+				exclude: '_bootstrap-variables.scss'
 			});
 
 			next();
@@ -169,7 +172,10 @@ module.exports.lessToStyl = function(next) {
 
 				paths: [path.join(utils.DIST, 'styl')],
 				recursive: true,
-				silent: true
+				silent: true,
+
+				// except our overrides for bootstrap variables
+				exclude: 'bootstrap-variables.styl'
 			});
 
 			next();
