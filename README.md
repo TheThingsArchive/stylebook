@@ -21,7 +21,7 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 2. Import a stylesheet in the language you use:
 
 	```css
-	@import 'ttn/ttn-variables';
+	@import 'ttn/variables';
 	
 	body {
 		color: $ttn-color-brand;
