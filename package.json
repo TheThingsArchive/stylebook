@@ -2,7 +2,6 @@
   "name": "stylebook",
   "version": "1.0.0",
   "description": "Styles for The Things Network websites",
-  "private": true,
   "scripts": {
     "convert": "node bin/convert",
     "docs": "node bin/convert docs",
