@@ -42,34 +42,40 @@ There are different strategies for using the stylesheets:
 
 ## Development
 
-1. [Install Ruby](https://www.ruby-lang.org/en/downloads/)
-2. Install [Bundler](http://bundler.io/):
+1.  [Install Ruby](https://www.ruby-lang.org/en/downloads/)
+2.  Install [Bundler](http://bundler.io/):
 	
-	```bash
-	$ gem install bundler
-	```
+	 ```bash
+ 	 $ gem install bundler
+ 	 ```
 
-3. Install Ruby dependencies via Bundler:
+3.  Install Ruby dependencies via Bundler:
 
-	```bash
-	$ bundle install
-	```
+	 ```bash
+	 $ bundle install
+	 ```
 
-4. Install [Node.js and NPM](https://nodejs.org/).
+4.  Install [Node.js and NPM](https://nodejs.org/).
 
-5. Install Node.js dependencies via NPM:
+5.  Install Node.js dependencies via NPM:
 
-  ```basg
-  $ npm install
-  ```
+   ```basg
+   $ npm install
+   ```
   
-6. Update styles in [src](src) using [Less](http://lesscss.org).
+6.  Update styles in [src](src) using [Less](http://lesscss.org).
 
-7. Run `convert` to update [dist](dist) with Less, SCSS, Stylus and CSS versions and process [docs/src](docs/src).
+7.  Run `convert` to update [dist](dist) with Less, SCSS, Stylus and CSS versions and process [docs/src](docs/src).
 
 	```bash
 	$ npm run convert
 	```
+
+    Or to watch for changes in `src` and convert:
+    
+    ```bash
+    $ npm run convert:watch
+    ```
 
 > *NOTE:* Running `npm install` will overwrite the git pre-commit hook to execute [npm run convert & npm run add](package.json#L10) automagically on every commit so you can ignore step 7.
 

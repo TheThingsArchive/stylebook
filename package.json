@@ -4,6 +4,7 @@
   "description": "Styles for The Things Network websites",
   "scripts": {
     "convert": "node bin/convert",
+    "convert:watch": "watch 'npm run convert' ./src",
     "docs": "node bin/convert docs",
     "add": "git add .",
     "test": "npm run convert && grunt test",
@@ -38,6 +39,7 @@
     "pre-commit": "^1.1.3",
     "replace": "^0.3.0",
     "rimraf": "^2.5.4",
-    "should": "^11.1.0"
+    "should": "^11.1.0",
+    "watch": "^0.19.2"
   }
 }
