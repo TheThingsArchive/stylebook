@@ -1,5 +1,7 @@
+@import "../variables";
+
 .ttn-navbar-body {
-    padding-top: $ttn-navbar-height;
+    padding-top: @ttn-navbar-height;
 }
 
 #navbar {
@@ -7,7 +9,7 @@
     z-index: 1001;
     top: 0;
     width: 100%;
-    height: $ttn-navbar-height;
+    height: @ttn-navbar-height;
     padding: 0 15%;
     background: white;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -28,8 +30,8 @@
         position: relative;
         padding: 0;
         padding-right: 10px;
-        line-height: $ttn-navbar-height;
-        color: $ttn-color-brand-light;
+        line-height: @ttn-navbar-height;
+        color: @ttn-color-brand-light;
         background-color: white;
 
         img {
@@ -54,21 +56,22 @@
 
             .dropdown-button {
                 padding: 0 20px;
-                line-height: $ttn-navbar-height;
-                height: $ttn-navbar-height;
-                color: $ttn-color-brand-light;
+                line-height: @ttn-navbar-height;
+                height: @ttn-navbar-height;
+                color: @ttn-color-brand-light;
                 background-color: white;
                 border: none;
                 position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
                 cursor: pointer;
 
+                & > * {
+                    float: left;
+                }
+
                 .profile-icon {
-                    height: 50px;
-                    width: 50px;
-                    margin: 0 10px;
+                    height: 51px;
+                    width: 51px;
+                    margin: 7px 10px 0;
                     background-size: cover;
                     background-position: center;
                     border-radius: 50%;
@@ -84,16 +87,16 @@
                 }
 
                 &:hover {
-                    background-color: $ttn-color-gray-lighter;
+                    background-color: @ttn-color-gray-lighter;
                 }
             }
 
             a {
                 display: block;
                 padding: 0 20px;
-                line-height: $ttn-navbar-height;
-                height: $ttn-navbar-height;
-                color: $ttn-color-brand-light;
+                line-height: @ttn-navbar-height;
+                height: @ttn-navbar-height;
+                color: @ttn-color-brand-light;
                 background-color: white;
 
                 &.button-circle {
@@ -106,7 +109,7 @@
 
                 &:hover {
                     background: #dfdfdf;
-                    color: $ttn-color-brand-light;
+                    color: @ttn-color-brand-light;
                 }
             }
 
@@ -141,11 +144,11 @@
         position: absolute;
         top: 0;
         right: 0;
-        height: $ttn-navbar-height;
-        width: $ttn-navbar-height;
+        height: @ttn-navbar-height;
+        width: @ttn-navbar-height;
     }
 
-    @media screen and (max-width: $ttn-mobile-max) {
+    @media screen and (max-width: @ttn-mobile-max) {
         width: 100%;
         padding: 0;
 
@@ -169,7 +172,7 @@
                 border-radius: 1px;
                 height: 5px;
                 width: 35px;
-                background: $ttn-color-brand-light;
+                background: @ttn-color-brand-light;
                 position: absolute;
                 display: block;
                 content: '';
@@ -205,7 +208,7 @@
         }
 
         ul {
-            padding-top: $ttn-navbar-height;
+            padding-top: @ttn-navbar-height;
             background-color: white;
 
             &.nav-dropdown {
@@ -241,7 +244,7 @@
         }
     }
 
-    @media screen and (min-width: ($ttn-mobile-max + 1)) {
+    @media screen and (min-width: (@ttn-mobile-max + 1)) {
         .nav-list {
             display: block !important;
         }
