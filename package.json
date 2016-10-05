@@ -10,7 +10,7 @@
     "push": "git push --follow-tags"
   },
   "pre-commit": [
-    "convert",
+    "test",
     "add"
   ],
   "keywords": [
