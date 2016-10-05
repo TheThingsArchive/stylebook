@@ -9,7 +9,6 @@ var utils = require('../lib/utils');
 
 var tmpDir = path.join(__dirname, '..', 'tmp');
 var srcDir = path.join(__dirname, 'scss');
-var cmpDir = path.join(__dirname, 'css');
 
 describe('main', function() {
 
@@ -31,22 +30,22 @@ describe('main', function() {
       if (!files.every(function(file) {
           var tmpFile = path.join(tmpDir, file);
           var tmpData = fs.readFileSync(tmpFile, 'utf8');
-          var cmpFile = path.join(cmpDir, file);
-          var cmpData = fs.readFileSync(cmpFile, 'utf8');
 
-          if (tmpData !== cmpData) {
+          var expected = [
+            '.text-primary {\n  color: #FF0000; }',
+            '.ttn-color-brand {\n  color: #FF0000; }',
+            '.brand-primary {\n  color: #FF0000; }'
+          ];
 
-            if (process.env.UPDATE) {
-              fs.writeFileSync(cmpFile, tmpData);
-              error = new Error('Updated ' + cmpFile);
-            } else {
-              error = new Error(JsDiff.createPatch(tmpFile, cmpData, tmpData));
+          return expected.every(function(css) {
+
+            if (tmpData.indexOf(css) === -1) {
+              error = new Error('Cannot find: ' + css);
+              return false;
             }
 
-            return false;
-          }
-
-          return true;
+            return true;
+          });
 
         })) {
         return done(error);
@@ -58,8 +57,7 @@ describe('main', function() {
   });
 
   afterEach(function(done) {
-    done();
-    // rimraf(tmpDir, done);
+    rimraf(tmpDir, done);
   });
 
 });
