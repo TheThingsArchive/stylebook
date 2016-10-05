@@ -31,16 +31,18 @@ describe('main', function() {
           var tmpFile = path.join(tmpDir, file);
           var tmpData = fs.readFileSync(tmpFile, 'utf8');
 
-          var expected = [
-            '.text-primary {\n  color: #FF0000; }',
-            '.ttn-color-brand {\n  color: #FF0000; }',
-            '.brand-primary {\n  color: #FF0000; }'
-          ];
+          var expected = {
+            '.text-primary {\n  color: #FF0000; }': true,
+            '.ttn-color-brand {\n  color: #FF0000; }': true,
+            '.brand-primary {\n  color: #FF0000; }': true,
+            '${ttn-font-path}': false
+          };
 
-          return expected.every(function(css) {
+          return Object.keys(expected).every(function(css) {
+            var wanted = expected[css];
 
-            if (tmpData.indexOf(css) === -1) {
-              error = new Error('Cannot find: ' + css);
+            if ((tmpData.indexOf(css) !== -1) !== wanted) {
+              error = new Error((wanted ? 'Expected: ' : 'Didn\'t expect: ') + css);
               return false;
             }
 
