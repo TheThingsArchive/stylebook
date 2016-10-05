@@ -1,13 +1,18 @@
-GEM
+GIT
+  remote: https://github.com/brauliobo/less2sass.git
+  revision: 51998430e15005d93404cc55340f82b7b632a781
   specs:
     less2sass (1.2.0)
+
+GEM
+  specs:
     sass (3.4.22)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  less2sass (~> 1.2)
+  less2sass!
   sass (~> 3.4, >= 3.4.22)
 
 BUNDLED WITH
