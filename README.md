@@ -18,6 +18,8 @@ The [docs](docs) folder uses [dist/scss](dist/scss) to demonstrate the styles an
 	
 	> You can also [lock in to a certain branch or commit](https://docs.npmjs.com/files/package.json#github-urls).
 	
+	> If you use [yarn](https://yarnpkg.com/) you will need to run `yarn cache clean` before running `yarn upgrade` or `yarn add thethingsnetwork/stylebook` to update the module.
+	
 2. Import a stylesheet in the language you use:
 
 	```css
@@ -93,12 +95,6 @@ To run [all tests](test):
 ```bash
 npm install
 npm test
-```
-
-To update expected with actual output:
-
-```bash
-UPDATE=1 npm test
 ```
 
 ## TODO
