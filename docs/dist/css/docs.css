@@ -6097,7 +6097,8 @@ body {
   align-items: center;
   justify-content: center;
   background-size: cover;
-  z-index: 1000; }
+  z-index: 1000;
+  top: 65px; }
   .fixed-banner > a.link {
     color: white;
     cursor: pointer;
